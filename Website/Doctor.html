@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="indexStyle.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <script src="https://unpkg.com/parse@1.11.1/dist/parse.js"></script>
+    <script src="Doctor.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"/>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js" ></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+    <title>Heart OK</title>
+    <script>
+        init();
+    </script>
+</head>
+<body>
+  <div name="divsearch">
+  <input type="text" id="search" placeholder="Enter Addhar Number of Patient" style="margin-top: 10px;"/>
+  <button class="btn" id="btn" type="button" onclick="fetch()">Search</button>
+  </div>
+    <div class="post" id="post">
+        
+    </div>
+    <div class="bg-upload">
+  <div class="upload-content">
+    <div class="close" onclick="hidepopup()">+</div>
+    <form action="">
+      <input type="text" id="date" placeholder="Date" readonly>
+      <input type="text" id="uploadBy" value="" placeholder="Patient Addhar Number">
+      <input type="text" id="uploadReason" value="" placeholder="Record Title">
+      <input type="file" class="order" id="save" onclick="popup()" value="Upload"/>
+      <input type="button" class="order" id="preview" onclick="pre()" value="Preview"/>
+      <input type="button" class="order" id="upload" onclick="popup()" value="Upload"/>
+
+
+      <div style="clear:both">
+           <iframe id="viewer" frameborder="0" scrolling="no" width="100%" height="500"></iframe>
+        </div>
+      <div id="loading" style="margin-top:5px">
+      </div>
+    </form>
+  </div>
+</div>
+    <a href="#top" class="button" onclick="showpopup()" id="popupBtn"><i class="fas fa-plus"></i></a>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="indexStyle.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <script src="https://unpkg.com/parse@1.11.1/dist/parse.js"></script>
+    <script src="Data.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"/>
+    <title>Heart OK</title> 
+    <link rel="shortcut icon" type="image/png" href="heartok.png"/>
+    </head>
+<body id="body">
+    <div class="navigate">
+        <div id="logo">
+        </div>
+      <nav>
+          <img id="logo" src="heartok.png" alt="heartok.png"/>
+          <label>Heart OK</label>
+        <ul>
+          <li id="Home"><a href="#" onclick="home()">Home</a>
+          <li id="Check"><a href="#" onclick="check()">Check</a></li>
+          <li id="Medicine"><a href="#" onclick="medicine()">Medicine</a></li>
+          <li><a href="#" onclick="logout()">Logout</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="frame" id="frame">
+    </div>
+    <script>
+      onLoad();</script>
+</body>
+</html>
