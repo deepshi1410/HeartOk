@@ -13,18 +13,18 @@ library(kernlab)
 library(gbm)
 library(e1071)
 
-
- download.file("https://archive.ics.uci.edu/ml/machine-learning-databases/heart-disease/processed.cleveland.data", "processed.cleveland.data")
- download.file("https://archive.ics.uci.edu/ml/machine-learning-databases/heart-disease/processed.hungarian.data","processed.hungarian.data")
- download.file("https://archive.ics.uci.edu/ml/machine-learning-databases/heart-disease/processed.switzerland.data","processed.switzerland.data")
- download.file("https://archive.ics.uci.edu/ml/machine-learning-databases/heart-disease/processed.va.data","processed.va.data")
+download.file("https://archive.ics.uci.edu/ml/machine-learning-databases/heart-disease/processed.cleveland.data", "processed.cleveland.data")
+download.file("https://archive.ics.uci.edu/ml/machine-learning-databases/heart-disease/processed.hungarian.data","processed.hungarian.data")
+download.file("https://archive.ics.uci.edu/ml/machine-learning-databases/heart-disease/processed.switzerland.data","processed.switzerland.data")
+download.file("https://archive.ics.uci.edu/ml/machine-learning-databases/heart-disease/processed.va.data","processed.va.data")
 
 #Data Preprocessing
 processed.cleveland <- read.csv("processed.cleveland.data",header=FALSE)
 processed.hungarian <- read.csv("processed.hungarian.data", header=FALSE)
 processed.switzerland <- read.csv("processed.switzerland.data", header=FALSE)
 processed.va <- read.csv("processed.va.data", header=FALSE)
-#Combining all into one
+
+#Combining all files into one
 data<-rbind(processed.cleveland,processed.hungarian,processed.switzerland,processed.va)
 
 idx <- data == "?"
@@ -32,7 +32,7 @@ is.na(data) <- idx
 
 colnames(data)<-c("age","sex","cp","trestbps","chol","fbs","restecg","thalach","exang","oldpeak","slope","ca","thal","num")
 
-#Converting factors/character into appropriate datatype 
+#Converting factors/character into appropriate datatype as per requirement
 data$age <- as.numeric(data$age)
 data$sex<-as.factor(data$sex)
 data$cp<-as.factor(data$cp)
@@ -51,7 +51,7 @@ data$num<-as.factor(data$num)
 #To convert each column of data to numeric 
 data <- as.data.frame(apply(data, 2, as.numeric))
 
-#Data Preprocessing
+#Data Preprocessing/cleaning
 data$trestbps = ifelse(is.na(data$trestbps),ave(data$trestbps, FUN = function(x) mean(x, na.rm = 'TRUE')),data$trestbps)
 data$trestbps = as.numeric(format(round(data$trestbps, 0)))
 
@@ -94,7 +94,7 @@ data_set$num <- factor(data_set$num, levels = c(0,1), labels = c("negative","pos
 #Final_data <- complete(clean_data)
 Final_data<-data_set
 
-#Divide into training and testing
+#Divide dataset into training and testing
 set.seed(3033)
 inTrain<-createDataPartition(y=Final_data$num,p=0.7,list=F)
 training<-Final_data[inTrain,]
